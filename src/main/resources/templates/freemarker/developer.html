@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>View Note</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>View Note</h1>
+<a href="/developers">Back to Developer List</a>
+<br/><br/>
+<#if developer??>
+<table border="0">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>${developer.id}</td>
+    </tr>
+    <tr>
+        <td>User Name</td>
+        <td>:</td>
+        <td>${developer.userName}</td>
+    </tr>
+    <tr>
+        <td>Mail</td>
+        <td>:</td>
+        <td>${developer.mail}</td>
+    </tr>
+    <tr>
+        <td>Commit Last Updated On</td>
+        <td>:</td>
+        <td>${developer.lastUpdateTime}</td>
+    </tr>
+</table>
+<br/><br/>
+<#if allowDelete>
+<form action="${'/developers/' + developer.id + '/delete'}" method="POST">
+    Delete this developer? <input type="submit" value="Yes" />
+</form>
+<#else>
+<div>
+    <a href="${'/developers/' + developer.id + '/edit'}">Edit</a> |
+    <a href="${'/developers/' + developer.id + '/delete'}">Delete</a>
+</div>
+</#if>
+</#if>
+<#if errorMessage?has_content>
+<div class="error">${errorMessage}</div>
+</#if>
+</body>
+</html>

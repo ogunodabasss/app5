@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Note List</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>Developer List</h1>
+
+<div>
+    <nobr>
+        <a href="/developers/add">Add Developer</a> |
+        <a href="/">Back to Index</a>
+    </nobr>
+</div>
+<br/><br/>
+
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>UserName</th>
+            <th>Mail</th>
+            <th>Last Updated On</th>
+            <th>Edit</th>
+            <th>Detail</th>
+        </tr>
+
+        <#list developers as developer>
+        <tr>
+            <td>${developer.id}</td>
+            <td>${developer.userName}</td>
+            <td>${developer.mail}</td>
+            <td>${developer.lastUpdateTime}</td>
+            <td><a href="${'developers/' + developer.id }">Edit</a></td>
+            <td><a href="${'commits/' + developer.id}">Detail</a></td>
+
+        </tr>
+    </#list>
+    </table>
+</div>
+<br/><br/>
+<div>
+    <nobr>
+        <#if hasPrev><a href="${'?page=' + prev}">Prev</a>&nbsp;&nbsp;&nbsp;</#if>
+    <#if hasNext><a href="${'?page=' + next}">Next</a></#if>
+</nobr>
+</div>
+</body>
+</html>

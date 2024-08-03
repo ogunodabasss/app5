@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Commit Detail</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>Commit Detail</h1>
+
+<div>
+    <nobr>
+        <a href="/">Back to Index</a>
+    </nobr>
+
+</div>
+<br/><br/>
+
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Hash</th>
+            <th>Timestamp</th>
+            <th>Author</th>
+            <th>Message</th>
+            <th>Patch</th>
+        </tr>
+
+        <#list commits as commit>
+        <tr>
+            <td>${commit.id}</td>
+            <td>${commit.hash}</td>
+            <td>${commit.time}</td>
+            <td>${commit.author}</td>
+            <td>${commit.commitDetail.message}</td>
+            <td>${commit.commitDetail.patch}</td>
+
+
+        </tr>
+    </#list>
+    </table>
+</div>
+<br/><br/>
+<div>
+
+</div>
+</body>
+</html>

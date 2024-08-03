@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title><#if add>Create a Developer<#else>Edit a Developer</#if></title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1><#if add>Create a Developer:<#else>Edit a Developer:</#if></h1>
+<a href="/developers">Back to Developer List</a>
+<br/><br/>
+<#if add>
+<#assign urlAction>/developers/add</#assign>
+<#assign submitTitle>Create</#assign>
+<#else>
+<#assign urlAction>${'/developers/' + developer.id + '/edit'}</#assign>
+<#assign submitTitle>Update</#assign>
+</#if>
+<form action="${urlAction}" name="developer" method="POST">
+    <table border="0">
+        <#if developer.id??>
+        <tr>
+            <td>ID</td>
+            <td>:</td>
+            <td>${developer.id}</td>
+        </tr>
+    </#if>
+    <tr>
+        <td>User Name</td>
+        <td>:</td>
+        <td><input type="text" name="userName" value="${(developer.userName)!''}" /></td>
+    </tr>
+    <tr>
+        <td>Mail</td>
+        <td>:</td>
+        <td><input type="text" name="mail" value="${(developer.mail)!''}" /></td>
+    </tr>
+    <#if developer.lastUpdateTime??>
+    <tr>
+        <td>Commit Last Update Date </td>
+        <td>:</td>
+        <td> <a href="${'/developers/' + developer.id + '/updateLastUpdateTime'}" >${developer.lastUpdateTime}</a></td>
+    </tr>
+</#if>
+</table>
+<input type="submit" value="${submitTitle}" />
+</form>
+
+<br/>
+<#if errorMessage?has_content>
+<div class="error">${errorMessage}</div>
+</#if>
+</body>
+</html>
